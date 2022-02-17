@@ -1,3 +1,10 @@
+<?php
+
+include "../include/lib_js.php";
+require "../include/db.php";
+
+?>
+
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -5,17 +12,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastrar Autor</title>
+    <title>Escrever Artigo</title>
 </head>
-
-<?php
-include "../include/lib_js.php";
-require "../include/db.php";
-require "../include/include_autor.php";
-
-$idRecebido = $_GET['id'] ?? '';
-$autorRecebido = checkAutor($idRecebido);
-?>
 
 <body>
 
@@ -42,7 +40,7 @@ $autorRecebido = checkAutor($idRecebido);
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-8">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="autores.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2
+                        <a href="home.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2
                         rounded-md text-sm font-medium">Voltar</a>
 
                         <a href="../index.php" class="bg-red-900 text-white px-3 py-2 rounded-md text-sm font-medium
@@ -59,7 +57,7 @@ $autorRecebido = checkAutor($idRecebido);
 <!-- ====== -->
 
 <header class="flex justify-center items-center mt-6 text-3xl font-bold">
-    <h1>Cadastro de Autores</h1>
+    <h1>Escreva abaixo o seu artigo!</h1>
 </header>
 
 <!-- ================== -->
@@ -67,19 +65,21 @@ $autorRecebido = checkAutor($idRecebido);
 <!-- ================== -->
 
 <div class="text-center mb-4 mt-6">
-    <form action="../actions/action_cadastrarAutor.php" method="post">
-        <input type="hidden" name="inputId" value="<?= $autorRecebido['id'] ?? ''?>">
-        <label for="inputNome" class="font-semibold">Nome do Autor:</label>
+    <form action="../actions/action_escreverArtigo.php" method="post">
+        <input type="hidden" name="inputId" value="<?= $_SESSION['user_id'] ?>">
+        <label for="inputTitulo" class="font-semibold">Título do Artigo:</label>
         <br>
-        <input type="text" id="inputNome" name="inputNome" class="text-center border rounded
+        <input type="text" id="inputTitulo" name="inputTitulo" class="text-center border rounded
              p-1 w-2/5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300
-             rounded-md" required value="<?= $autorRecebido['nome'] ?? '' ?>">
+             rounded-md" required value="<?= $tituloRecebido['titulo'] ?? '' ?>">
         <br>
-        <label for="inputEmail" class="font-semibold">E-mail do Autor:</label>
+        <label for="inputCorpo" class="font-semibold">Artigo:</label>
         <br>
-        <input type="email" id="inputEmail" name="inputEmail" class="text-center border rounded
-             p-1 w-2/5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300
-             rounded-md" required value="<?= $autorRecebido['email'] ?? '' ?>">
+        <textarea class="text-center border rounded p-1 w-2/5 mt-1 focus:ring-indigo-500 focus:border-indigo-500
+        shadow-sm sm:text-sm border-gray-300 rounded-md" id="inputCorpo" name="inputCorpo" rows="5"
+                  cols="40"><?= $corpoRecebido['corpo'] ?? '' ?></textarea>
+        </label>
+
         <br>
         <button class="ml-2 mt-4 items-center justify-center px-8 py-3 border border-transparent text-base
             font-medium rounded-md text-white bg-lime-700 hover:bg-lime-500 md:py-4 md:text-lg md:px-10" type="submit">Confirmar</button>

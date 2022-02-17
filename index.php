@@ -15,7 +15,9 @@ $msg = $_GET['msg'] ?? '';
 
 <body>
 
-<!-- CAMPOS PARA LOGIN -->
+<!-- ====== -->
+<!-- HEADER -->
+<!-- ====== -->
 
 <main class="flex justify-center items-center">
     <section class="bg-white p-8 w-96 rounded">
@@ -27,15 +29,19 @@ $msg = $_GET['msg'] ?? '';
                 <p class="mt-6">
                     Informe seu e-mail e senha para acessar nosso incrível blog!
                 </p>
-                <?php if ($msg == 0) { ?>
+                <?php if ($msg == "cadastroInexistente") { ?>
                     <h3 class="mt-6 font-bold text-xl">Usuário não cadastrado!</h3>
                 <?php } ?>
 
-                <?php if ($msg == 1) { ?>
+                <?php if ($msg == "senhaIncorreta") { ?>
                     <h3 class="mt-6 font-bold text-xl">Senha incorreta!</h3>
                 <?php } ?>
 
             </div>
+
+            <!-- ========== -->
+            <!-- FORM LOGIN -->
+            <!-- ========== -->
 
             <div>
                 <form class="flex flex-col items-center mt-6" action="include/validaLogin.php" method="POST">

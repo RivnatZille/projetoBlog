@@ -7,10 +7,10 @@ $pw = (string) $_POST['pw'];
 
 if (!$isUser = getUser($email)) {
 //    echo "Usuário não cadastrado!";
-    header('location: ../index.php?msg=0');
+    header('location: ../index.php?msg=cadastroInexistente');
 } elseif ($pw != $isUser['senha']) {
 //    echo "Senha incorreta!";
-    header('location: ../index.php?msg=1');
+    header('location: ../index.php?msg=senhaIncorreta');
 } else {
     $_SESSION['user_id'] = $isUser['id'];
     $_SESSION['user_name'] = $isUser['name'];

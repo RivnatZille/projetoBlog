@@ -1,5 +1,9 @@
 <?php
     require "../include/db.php";
+    require "../include/include_autor.php";
+
+    $listaAutores = buscaAutores();
+
     $msg = $_GET['msg'] ?? '';
 ?>
 
@@ -13,8 +17,9 @@
     <title>Projeto Blog</title>
 </head>
 <body>
-
+<!-- ==================== -->
 <!-- MENUS PARA NAVEGAÇÃO -->
+<!-- ==================== -->
 
 <nav class="bg-gray-800">
     <div class="mx-auto px-2 sm:px-6 lg:px-8">
@@ -46,25 +51,83 @@
     </div>
 </nav>
 
+<!-- ======= -->
 <!-- ALERTAS -->
+<!--======== -->
 
 <section class="flex justify-center items-center text-xs font-bold">
-    <?php if ($msg == 0) { ?>
+    <?php if ($msg == "falhaCadastro") { ?>
         <h3 class="mt-6 font-bold text-red-500">Falha ao cadastrar!</h3>
     <?php } ?>
 
-    <?php if ($msg == 1) { ?>
+    <?php if ($msg == "sucessoCadastro") { ?>
         <h3 class="mt-6 font-bold text-lime-500">Autor cadastrado com sucesso!</h3>
+    <?php } ?>
+
+    <?php if ($msg == "falhaDeletar") { ?>
+        <h3 class="mt-6 font-bold text-red-500">Falha ao deletar autor!</h3>
+    <?php } ?>
+
+    <?php if ($msg == "sucessoDeletar") { ?>
+        <h3 class="mt-6 font-bold text-lime-500">Autor deletado com sucesso!</h3>
+    <?php } ?>
+
+    <?php if ($msg == "falhaAlterar") { ?>
+        <h3 class="mt-6 font-bold text-red-500">Falha ao alterar os dados do autor!</h3>
+    <?php } ?>
+
+    <?php if ($msg == "sucessoAlterar") { ?>
+        <h3 class="mt-6 font-bold text-lime-500">Dados do autor alterados com sucesso!</h3>
     <?php } ?>
 </section>
 
+<!-- ====== -->
 <!-- HEADER -->
+<!-- ====== -->
 
 <header class="flex justify-center items-center mt-6 text-3xl font-bold">
     <h1>Lista de Autores</h1>
 </header>
 
-<!-- ARTIGOS -->
+<!-- ============= -->
+<!-- TABLE AUTORES -->
+<!-- ============= -->
+
+<div class="flex flex-col">
+    <div class="flex justify-center -my-2 overflow-x-auto">
+        <div class="m-4 py-2 align-middle inline-block w-11/12 sm:px-6 lg:px-8">
+            <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            ID
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Nome
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            E-mail
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Status
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Editar
+                        </th>
+                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Excluir
+                        </th>
+                    </thead>
+                    </tr>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <?= tabela($listaAutores) ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
