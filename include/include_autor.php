@@ -66,10 +66,13 @@ function tabela($arrayAutores)
     foreach ($arrayAutores as $autor) {
         $id = $autor['id'];
         $html .= "<tr>";
-        $html .= "<td class='px-6 py-4 whitespace-nowrap'>{$autor['id']}</td>";
+        if (array_key_exists('user_id', $_SESSION) && $_SESSION['user_id'] == 1) {
+            $html .= "<td class='px-6 py-4 whitespace-nowrap'>{$autor['id']}</td>";
+        }
         $html .= "<td class='px-6 py-4 whitespace-nowrap'>{$autor['nome']}</td>";
         $html .= "<td class='px-6 py-4 whitespace-nowrap'>{$autor['email']}</td>";
-        if ($autor['status'] == 1) {
+        if (array_key_exists('user_id', $_SESSION) && $_SESSION['user_id'] == 1) {
+            if ($autor['status'] == 1) {
             $html .= "<td class='px-6 py-4 whitespace-nowrap'>
                         <span class='px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800'>
                             Ativo
@@ -96,6 +99,7 @@ function tabela($arrayAutores)
                           </span>
                       </a>
                   </td>";
+        }
         $html .= "</tr>";
     }
     return $html;

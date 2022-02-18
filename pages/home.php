@@ -3,6 +3,8 @@
     require "../include/include_home.php";
 
     $msg = $_GET['msg'] ?? '';
+
+    $listaArtigos = buscaArtigos();
 ?>
 
 <!doctype html>
@@ -26,24 +28,59 @@
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-4">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+
+                        <a href="../index.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2
+                        rounded-md text-sm font-medium">
+                            Página Inicial
+                        </a>
+
                         <a href="home.php" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium
-                        hover:bg-gray-700" aria-current="page">Artigos</a>
+                        hover:bg-gray-700" aria-current="page">
+                            Artigos
+                        </a>
 
                         <a href="autores.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2
-                        rounded-md text-sm font-medium">Autores</a>
+                        rounded-md text-sm font-medium">
+                            Autores
+                        </a>
+
+                        <?php if (array_key_exists('user_id', $_SESSION)) { ?>
+                            <a href="escreverArtigo.php" class="bg-indigo-700 text-white px-3 py-2 rounded-md text-sm
+                            font-medium hover:bg-gray-700">
+                                Escrever Artigo
+                            </a>
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-8">
-                        <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                        <a href="escreverArtigo.php" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3
-                        py-2 rounded-md text-sm font-medium">Escrever Artigo</a>
 
-                        <a href="../index.php" class="bg-red-900 text-white px-3 py-2 rounded-md text-sm
-                        font-medium hover:bg-gray-700" aria-current="page">Sair</a>
+                        <?php if (array_key_exists('user_id', $_SESSION)) { ?>
+                            <p class="font-medium text-white px-3 py-2">
+                                <?= $_SESSION['user_name'] ?>
+                            </p>
+
+                            <a href="cadastrarAutor.php?id=<?=$_SESSION['user_id']?>"
+                               class="bg-indigo-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" aria-current="page">
+                                Alterar Dados
+                            </a>
+
+                            <a href="../include/include_logout.php" class="bg-red-900 text-white px-3 py-2 rounded-md
+                            text-sm font-medium hover:bg-red-700" aria-current="page">
+                                Sair
+                            </a>
+
+                        <?php } else {?>
+
+                            <a href="login.php" class="bg-green-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700" aria-current="page">
+                                Entrar
+                            </a>
+
+                        <?php } ?>
+
                     </div>
                 </div>
             </div>
@@ -69,42 +106,23 @@
 <!-- HEADER -->
 <!-- ====== -->
 
-<header class="flex justify-center items-center mt-6 text-4xl font-extrabold">
-    <h1>Artigos</h1>
+<header class="font-extrabold text-4xl text-center sm:text-8xl text-black leading-tight mt-4">
+    <h1>Lista de Artigos</h1>
 </header>
 
 <!-- =================== -->
 <!-- CONTAINER PRINCIPAL -->
 <!-- =================== -->
 
-<main class="m-6 flex flex-wrap">
+<main class="mx-6 my-12 flex flex-wrap">
 
     <!-- ======= -->
     <!-- ARTIGOS -->
     <!-- ======= -->
 
-    <div class="overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto mb-4">
-        <a href="#" class="w-full block h-full">
-            <div class="bg-white hover:bg-gray-800 w-full p-4">
-                <p class="text-indigo-500 text-md font-medium">
-                </p>
-                <p class="text-indigo-500 text-xl font-medium mb-2">
-                    Título do Artigo!
-                </p>
-                <p class="text-gray-400 hover:text-gray-300 font-light text-md">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad exercitationem magni obcaecati quasi.
-                    Ab aliquam aperiam, assumenda autem dolor est expedita fugit, inventore iste nisi nostrum placeat,
-                    quaerat sunt veritatis!
-                </p>
-                <p class="text-gray-400 text-sm font-light mt-2">
-                    Autor: João
-                </p>
-            </div>
-        </a>
-    </div>
+    <?= tabelaArtigos($listaArtigos) ?>
 
 </main>
-
 
 </body>
 </html>

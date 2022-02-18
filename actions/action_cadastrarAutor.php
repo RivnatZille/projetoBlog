@@ -24,6 +24,7 @@ if (!$idAutor) {
         header('Location: ../pages/autores.php?msg=falhaAlterar');
         exit;
     } else {
+        $_SESSION['user_name'] = $nomeAutor;
         header('Location: ../pages/autores.php?msg=sucessoAlterar');
         exit;
     }
