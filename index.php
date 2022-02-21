@@ -15,11 +15,23 @@
 </head>
 <body>
 
+<!-- ============ -->
+<!-- BACKGROUND -->
+<!-- ============ -->
+
+<main>
+    <div class="bg-indigo-900 relative overflow-hidden h-screen">
+        <img src="images/background_landingpage.jpg" class="absolute h-full w-full object-cover"/>
+        <div class="inset-0 bg-black opacity-25 absolute">
+        </div>
+
+        <div class="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-40">
+
 <!-- ==================== -->
 <!-- MENUS PARA NAVEGAÇÃO -->
 <!-- ==================== -->
 
-<nav class="bg-gray-800">
+<nav class="fixed top-0 left-0 w-full bg-gray-800">
     <div class="mx-auto px-2 sm:px-6 lg:px-8">
         <div class="relative flex items-center justify-between h-16">
             <div class="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
@@ -58,6 +70,10 @@
                                 Sair
                             </a>
                         <?php } else {?>
+                            <a href="pages/cadastrarAutor.php"
+                               class="bg-indigo-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" aria-current="page">
+                                Inscreva-se
+                            </a>
                             <a href="pages/login.php" class="bg-green-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700" aria-current="page">
                                 Entrar
                             </a>
@@ -70,18 +86,6 @@
         </div>
     </div>
 </nav>
-
-<!-- ============ -->
-<!-- BACKGROUND -->
-<!-- ============ -->
-
-<main>
-    <div class="bg-indigo-900 relative overflow-hidden h-screen">
-        <img src="images/background_landingpage.jpg" class="absolute h-full w-full object-cover"/>
-        <div class="inset-0 bg-black opacity-25 absolute">
-        </div>
-
-        <div class="container mx-auto px-6 md:px-12 relative z-10 flex items-center py-32 xl:py-40">
 
             <!-- ====== -->
             <!-- HEADER -->

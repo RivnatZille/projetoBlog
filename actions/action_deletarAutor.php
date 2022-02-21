@@ -6,6 +6,10 @@ require "../include/include_autor.php";
 $id = $_GET['id'];
 $deletaAutor = deletarAutor($id);
 
+// ***************** //
+// EXCLUSÃO DE AUTOR //
+// ***************** //
+
 if (!$deletaAutor) {
     header("Location: ../pages/autores.php?msg=sucessoDeletar");
     exit;

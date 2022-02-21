@@ -75,6 +75,11 @@
 
                         <?php } else {?>
 
+                            <a href="cadastrarAutor.php"
+                               class="bg-indigo-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" aria-current="page">
+                                Inscreva-se
+                            </a>
+
                             <a href="login.php" class="bg-green-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700" aria-current="page">
                                 Entrar
                             </a>
@@ -99,6 +104,22 @@
 
     <?php if ($msg == "sucessoArtigo") { ?>
         <h3 class="mt-6 font-bold text-lime-500">Artigo registrado com sucesso!</h3>
+    <?php } ?>
+
+    <?php if ($msg == "falhaAlteracao") { ?>
+        <h3 class="mt-6 font-bold text-red-500">Falha ao editar o artigo!</h3>
+    <?php } ?>
+
+    <?php if ($msg == "sucessoAlteracao") { ?>
+        <h3 class="mt-6 font-bold text-lime-500">Artigo editado com sucesso!</h3>
+    <?php } ?>
+
+    <?php if ($msg == "falhaDeletar") { ?>
+        <h3 class="mt-6 font-bold text-red-500">Falha ao excluir o artigo!</h3>
+    <?php } ?>
+
+    <?php if ($msg == "sucessoDeletar") { ?>
+        <h3 class="mt-6 font-bold text-lime-500">Artigo excluído com sucesso!</h3>
     <?php } ?>
 </section>
 

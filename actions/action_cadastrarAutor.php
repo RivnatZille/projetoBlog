@@ -7,6 +7,10 @@ $idAutor = $_POST['inputId'];
 $nomeAutor = $_POST['inputNome'];
 $emailAutor = $_POST['inputEmail'];
 
+// ********************** //
+// CADASTRO DE NOVO AUTOR //
+// ********************** //
+
 if (!$idAutor) {
     $novoCadastro = cadastraAutor($nomeAutor, $emailAutor);
 
@@ -18,6 +22,11 @@ if (!$idAutor) {
         exit;
     }
 } else {
+
+    // ********************* //
+    // ALTERAÇÃO DE CADASTRO //
+    // ********************* //
+
     $alteraCadastro = alteraAutor($idAutor, $nomeAutor, $emailAutor);
 
     if (!$alteraCadastro) {

@@ -1,18 +1,40 @@
 <?php
 
 require "../include/db.php";
-require "../include/include_artigo.php";
+require "../include/include_paginaArtigo.php";
 
 $idAutor = $_POST['inputId'];
+$idArtigo = $_POST['inputIdArtigo'];
 $titulo = $_POST['inputTitulo'];
 $corpo = $_POST['inputCorpo'];
 
-$novoArtigo = cadastraArtigo($idAutor, $titulo, $corpo);
+// *********************** //
+// CADASTRO DE NOVO ARTIGO //
+// *********************** //
 
-if (!$novoArtigo) {
-    header('Location: ../pages/home.php?msg=falhaArtigo');
-    exit;
+if (!$idArtigo) {
+    $novoArtigo = cadastraArtigo($idAutor, $titulo, $corpo);
+
+    if (!$novoArtigo) {
+        header('Location: ../pages/home.php?msg=falhaArtigo');
+        exit;
+    } else {
+        header('Location: ../pages/home.php?msg=sucessoArtigo');
+        exit;
+    }
 } else {
-    header('Location: ../pages/home.php?msg=sucessoArtigo');
-    exit;
+
+    // ******************* //
+    // ALTERAÇÃO DE ARTIGO //
+    // ******************* //
+
+    $alteraArtigo = alteraArtigo($idArtigo, $titulo, $corpo);
+
+    if (!$alteraArtigo) {
+        header('Location: ../pages/home.php?msg=sucessoAlteracao');
+        exit;
+    } else {
+        header('Location: ../pages/home.php?msg=falhaAlteracao');
+        exit;
+    }
 }

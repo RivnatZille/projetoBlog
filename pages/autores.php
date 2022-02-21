@@ -62,6 +62,10 @@
                                 Sair
                             </a>
                         <?php } else {?>
+                            <a href="cadastrarAutor.php"
+                               class="bg-indigo-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" aria-current="page">
+                                Inscreva-se
+                            </a>
                             <a href="login.php" class="bg-green-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-700" aria-current="page">
                                 Entrar
                             </a>

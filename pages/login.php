@@ -48,8 +48,8 @@ $msg = $_GET['msg'] ?? '';
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                 <div class="hidden sm:block sm:ml-6">
                     <div class="flex space-x-8">
-                        <a href="#" class="bg-green-900 text-white px-3 py-2 rounded-md text-sm
-                        font-medium hover:bg-green-700" aria-current="page">
+                        <a href="cadastrarAutor.php"
+                           class="bg-indigo-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-indigo-700" aria-current="page">
                             Inscreva-se
                         </a>
                     </div>
