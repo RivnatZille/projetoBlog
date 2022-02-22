@@ -6,7 +6,9 @@ require "../include/include_paginaArtigo.php";
 $idAutor = $_POST['inputId'];
 $idArtigo = $_POST['inputIdArtigo'];
 $titulo = $_POST['inputTitulo'];
-$corpo = $_POST['inputCorpo'];
+$corpo = htmlentities($_POST['inputCorpo'], ENT_QUOTES);
+//var_dump($corpo);
+//exit;
 
 // *********************** //
 // CADASTRO DE NOVO ARTIGO //

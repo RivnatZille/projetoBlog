@@ -4,7 +4,7 @@ require "../include/db.php";
 require "../include/include_autor.php";
 
 $idAutor = $_POST['inputId'];
-$nomeAutor = $_POST['inputNome'];
+$nomeAutor = htmlentities($_POST['inputNome'], ENT_QUOTES);
 $emailAutor = $_POST['inputEmail'];
 
 // ********************** //

@@ -31,8 +31,12 @@ function tabelaArtigos($arrayArtigos)
         $html .= "<div class='overflow-hidden shadow-lg rounded-lg h-90 w-60 md:w-80 cursor-pointer m-auto mb-8'>";
         $html .= "<a href='paginaArtigo.php?idArtigo={$id}' class='w-full block h-full'>";
         $html .= "<div class='bg-gray-100 hover:bg-gray-800 w-full p-4'>";
-        $html .= "<p class='text-indigo-500 text-xl font-medium mb-2'>{$artigo['titulo']}</p>";
-        $html .= "<p class='text-gray-400 hover:text-gray-300 font-light text-md'>{$artigo['LEFT (artigo.corpo, 60)']}...</p>";
+        $html .= "<p class='text-indigo-500 text-xl font-medium mb-2'>"
+                      . html_entity_decode($artigo['titulo']) .
+                  "</p>";
+        $html .= "<span class='text-gray-400 hover:text-gray-300 font-light text-md'>"
+                      . html_entity_decode($artigo['LEFT (artigo.corpo, 60)']) .
+            "...</span>";
         $html .= "<p class='text-gray-400 text-sm font-light mt-2'> Por: {$artigo['nome']}</p>";
         $html .= "</div>";
         $html .= "</a>";

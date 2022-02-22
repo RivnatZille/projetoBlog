@@ -111,7 +111,7 @@
         <!-- ====== -->
 
         <p class="text-l mt-4 max-w-4xl mx-auto">
-            <?= $arrayArtigo['corpo'] ?>
+            <?= html_entity_decode($arrayArtigo['corpo']) ?>
         </p>
         <hr class="mt-4">
 
@@ -119,7 +119,8 @@
         <!-- BOTÕES DINÂMICOS -->
         <!-- ================ -->
 
-        <?php if (array_key_exists('user_id', $_SESSION) && $_SESSION['user_id'] == $arrayArtigo['id_autor']) { ?>
+        <?php if (array_key_exists('user_id', $_SESSION) && ($_SESSION['user_id'] == $arrayArtigo['id_autor'] ||
+                $_SESSION['user_id'] == 1)) { ?>
 
             <div class="flex basis-full justify-center items-center mt-4">
                 <a href="escreverArtigo.php?idArtigo=<?=$idArtigo?>" class="mx-2 bg-indigo-900 text-white px-3 py-2
