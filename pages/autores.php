@@ -1,10 +1,10 @@
 <?php
-    require "../include/db.php";
-    require "../include/include_autor.php";
+require "../include/db.php";
+require "../include/include_autor.php";
 
-    $listaAutores = buscaAutores();
+$listaAutores = buscaAutores();
 
-    $msg = $_GET['msg'] ?? '';
+$msg = $_GET['msg'] ?? '';
 ?>
 
 <!doctype html>
@@ -15,6 +15,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Projeto Blog</title>
+    <link rel="stylesheet" href="../style/style_autores.css">
 </head>
 
 <body>
@@ -111,7 +112,7 @@
 <!-- HEADER -->
 <!-- ====== -->
 
-<header class="font-extrabold text-4xl text-center sm:text-8xl text-black leading-tight mt-4">
+<header class="font-extrabold text-4xl text-center sm:text-8xl text-white leading-tight mt-4">
     <h1>Lista de Autores</h1>
 </header>
 
@@ -152,7 +153,7 @@
                     </thead>
                     </tr>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <?= tabela($listaAutores) ?>
+                    <?= tabela($listaAutores) ?>
                     </tbody>
                 </table>
             </div>
@@ -164,5 +165,5 @@
 </html>
 
 <?php
-    include "../include/lib_js.php";
+include "../include/lib_js.php";
 ?>

@@ -5,7 +5,7 @@ require "../include/include_paginaArtigo.php";
 
 $idAutor = $_POST['inputId'];
 $idArtigo = $_POST['inputIdArtigo'];
-$titulo = $_POST['inputTitulo'];
+$titulo = htmlentities($_POST['inputTitulo'], ENT_QUOTES);
 $corpo = htmlentities($_POST['inputCorpo'], ENT_QUOTES);
 //var_dump($corpo);
 //exit;

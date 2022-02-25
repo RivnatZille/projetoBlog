@@ -3,7 +3,7 @@
 function buscaArtigos()
 {
     $sql = "SELECT autor.nome, artigo.id, artigo.id_autor, artigo.titulo, 
-            LEFT (artigo.corpo, 60) 
+            LEFT (artigo.corpo, 71) 
             FROM autor 
             LEFT JOIN artigo 
             ON autor.id = artigo.id_autor 
@@ -35,7 +35,7 @@ function tabelaArtigos($arrayArtigos)
                       . html_entity_decode($artigo['titulo']) .
                   "</p>";
         $html .= "<span class='text-gray-400 hover:text-gray-300 font-light text-md'>"
-                      . html_entity_decode($artigo['LEFT (artigo.corpo, 60)']) .
+                      . html_entity_decode($artigo['LEFT (artigo.corpo, 71)']) .
             "...</span>";
         $html .= "<p class='text-gray-400 text-sm font-light mt-2'> Por: {$artigo['nome']}</p>";
         $html .= "</div>";

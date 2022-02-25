@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Cadastrar Autor</title>
+    <link rel="stylesheet" href="../style/style_escreverArtigo.css">
 </head>
 
 <?php
@@ -85,19 +86,27 @@ $autorRecebido = checkAutor($idRecebido);
     <form action="../actions/action_cadastrarAutor.php" method="post">
         <input type="hidden" name="inputId" value="<?= $autorRecebido['id'] ?? ''?>">
         <label for="inputNome" class="font-semibold">Nome do Autor:</label>
+
         <br>
+
         <input type="text" id="inputNome" name="inputNome" class="text-center border rounded
              p-1 w-2/5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300
-             rounded-md" required value="<?= $autorRecebido['nome'] ?? '' ?>">
-        <br>
+             rounded-md drop-shadow-md" required value="<?= $autorRecebido['nome'] ?? '' ?>">
+
+        <br><br>
+
         <label for="inputEmail" class="font-semibold">E-mail do Autor:</label>
+
         <br>
+
         <input type="email" id="inputEmail" name="inputEmail" class="text-center border rounded
              p-1 w-2/5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300
-             rounded-md" required value="<?= $autorRecebido['email'] ?? '' ?>">
+             rounded-md drop-shadow-md" required value="<?= $autorRecebido['email'] ?? '' ?>">
+
         <br>
-        <button class="ml-2 mt-4 items-center justify-center px-8 py-3 border border-transparent text-base
-            font-medium rounded-md text-white bg-lime-700 hover:bg-lime-500 md:py-4 md:text-lg md:px-10" type="submit">Confirmar</button>
+
+        <button class="mx-2 bg-green-800 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600
+        drop-shadow-md mt-8" type="submit">Confirmar</button>
     </form>
 </div>
 

@@ -17,11 +17,13 @@ $artigoRecebido = checkArtigo($idRecebido);
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Escrever Artigo</title>
+    <link rel="stylesheet" href="../style/style_escreverArtigo.css">
     <script src="https://cdn.tiny.cloud/1/l8tz201qg1c3flz4dg0xjaj7c0m72365u5ychv76fejx47jg/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
             selector:'textarea',
-            menubar: false
+            menubar: false,
+            height: 500
         });
     </script>
 </head>
@@ -104,18 +106,15 @@ $artigoRecebido = checkArtigo($idRecebido);
 
         <input type="text" id="inputTitulo" name="inputTitulo" class="text-center border rounded
              p-1 w-2/5 mt-1 focus:ring-indigo-500 focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300
-             rounded-md" required value="<?= $artigoRecebido['titulo'] ?? '' ?>">
+             rounded-md drop-shadow-md" required value="<?= $artigoRecebido['titulo'] ?? '' ?>">
 
-        <br>
+        <br><br>
 
         <label for="inputCorpo" class="font-semibold">Artigo:</label>
 
         <br>
 
-<!--        <textarea class="text-center border rounded p-1 w-2/5 mt-1 focus:ring-indigo-500-->
-<!--        focus:border-indigo-500 shadow-sm sm:text-sm border-gray-300 rounded-md" id="inputCorpo" name="inputCorpo" rows="5" cols="40">--><?//= $artigoRecebido['corpo'] ?? '' ?><!--</textarea>-->
-
-        <div class="m-auto w-3/5 mt-1">
+        <div class="m-auto w-3/5 mt-1 drop-shadow-md">
             <textarea id="inputCorpo" name="inputCorpo"><?= $artigoRecebido['corpo'] ?? '' ?></textarea>
         </div>
 
@@ -125,13 +124,14 @@ $artigoRecebido = checkArtigo($idRecebido);
         <!-- BOTÕES -->
         <!-- ====== -->
 
-        <div class="flex basis-full justify-center items-center mt-4">
-            <button class="mx-2 bg-green-800 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600" type="submit">
+        <div class="flex basis-full justify-center items-center mt-2">
+            <button class="mx-2 bg-green-800 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-green-600 drop-shadow-md" type="submit">
                 Confirmar
             </button>
 
             <?php if ($idRecebido) { ?>
-            <a href="../pages/paginaArtigo.php?idArtigo=<?=$idRecebido?>" class="mx-2 bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700" aria-current="page">
+            <a href="../pages/paginaArtigo.php?idArtigo=<?=$idRecebido?>" class="mx-2 bg-gray-900 text-white px-3
+            py-2 rounded-md text-sm font-medium hover:bg-gray-700 drop-shadow-md" aria-current="page">
                 Voltar
             </a>
             <?php } ?>

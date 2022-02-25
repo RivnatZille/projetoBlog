@@ -13,7 +13,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title><?= $arrayArtigo['titulo'] ?></title
+    <title><?= $arrayArtigo['titulo'] ?></title>
+    <link rel="stylesheet" href="../style/style_home.css">
 </head>
 <body>
 
@@ -99,7 +100,7 @@
 <div class="mt-4">
     <div class="text-center w-4/5 mx-auto p-4 z-20 bg-gray-100 rounded drop-shadow-md">
         <h1 class="text-3xl font-extrabold dark:text-white block text-indigo-500">
-            <?= $arrayArtigo['titulo'] ?>
+            <?= html_entity_decode($arrayArtigo['titulo']) ?>
         </h1>
         <h2 class="text-l font-extrabold text-black dark:text-white block">
             Escrito por: <?= $arrayArtigo['nome'] ?>
@@ -127,7 +128,9 @@
                 rounded-md text-sm font-medium hover:bg-indigo-700" aria-current="page">
                     Editar
                 </a>
-                <a href="../actions/action_deletarArtigo.php?idArtigo=<?=$idArtigo?>" class="mx-2 bg-red-900 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-red-700" aria-current="page">
+                <a href="../actions/action_deletarArtigo.php?idArtigo=<?=$idArtigo?>" class="mx-2 bg-red-900
+                text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-red-700"
+                   aria-current="page">
                     Excluir
                 </a>
             </div>
@@ -141,8 +144,8 @@
 <!-- ============== -->
 
     <div class="flex basis-full justify-center items-center m-4">
-        <a href="home.php" class="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium
-                            hover:bg-gray-700" aria-current="page">
+        <a href="home.php" class="bg-gray-600 text-white px-3 py-2 rounded-md text-sm font-medium hover:bg-gray-700
+        drop-shadow-md" aria-current="page">
             Voltar
         </a>
     </div>
